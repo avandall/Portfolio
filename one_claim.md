@@ -5,10 +5,10 @@
 ## 🚀 Part 1: Hero Header & Professional Positioning
 
 ### One-Line Claim (Hero Header)
-> **"I build resilient, multi-model AI workflows and low-latency voice pipelines that eliminate production bottlenecks."**
+> **"I build resilient, multi-model AI workflows and low-latency  pipelines that eliminate production bottlenecks."**
 
 ### Bio
-AI-Powered Developer focused on designing end-to-end AI workflows, integrating multi-model pipelines, and solving production bottlenecks. I leverage AI to rapidly architect, test, and ship resilient software solutions tailored to real-world business needs.
+AI-First Developer focused on designing end-to-end AI workflows, integrating multi-model pipelines, and solving production bottlenecks. I apply software engineering discipline—strict validation, latency optimization, and automated testing—to make AI features production-ready.
 
 ### Call-to-Action (CTA)
 👉 **`[ Email Me / Schedule an Interview ]`** — *"Let's discuss how I can help your team build and scale production-ready AI workflows."*
@@ -17,7 +17,7 @@ AI-Powered Developer focused on designing end-to-end AI workflows, integrating m
 
 ## 🎯 Part 2: Featured Case Study
 
-### **Multi-Model Architecture & Low-Latency Voice Pipeline for Interactive Language Learning**
+### **Multi-Model Architecture & low-latency  Pipeline for Interactive Language Learning**
 
 #### 1. The Problem
 When building a real-time conversational speaking feature for an English learning app, the system encountered three key engineering bottlenecks:
