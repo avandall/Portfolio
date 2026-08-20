@@ -7,7 +7,67 @@ document.addEventListener('DOMContentLoaded', () => {
     initMobileNav();
     initContactModal();
     initLightboxModal();
+    initTouchSliders();
 });
+
+/* ==========================================================================
+   0.1 Fluid Touch & Drag Inertia Velocity Controller for Sliders
+   ========================================================================== */
+function initTouchSliders() {
+    const sliders = document.querySelectorAll('.skills-grid, .metrics-grid, .captures-proof-grid, .under-the-hood-grid, .philosophy-grid');
+
+    sliders.forEach(slider => {
+        let isDown = false;
+        let startX;
+        let scrollLeft;
+        let velX = 0;
+        let momentumID;
+
+        slider.addEventListener('mousedown', (e) => {
+            isDown = true;
+            slider.classList.add('is-dragging');
+            startX = e.pageX - slider.offsetLeft;
+            scrollLeft = slider.scrollLeft;
+            cancelAnimationFrame(momentumID);
+        });
+
+        slider.addEventListener('mouseleave', () => {
+            if (!isDown) return;
+            isDown = false;
+            slider.classList.remove('is-dragging');
+            beginMomentum();
+        });
+
+        slider.addEventListener('mouseup', () => {
+            if (!isDown) return;
+            isDown = false;
+            slider.classList.remove('is-dragging');
+            beginMomentum();
+        });
+
+        slider.addEventListener('mousemove', (e) => {
+            if (!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - slider.offsetLeft;
+            const walk = (x - startX) * 1.5;
+            const prevScrollLeft = slider.scrollLeft;
+            slider.scrollLeft = scrollLeft - walk;
+            velX = slider.scrollLeft - prevScrollLeft;
+        });
+
+        function beginMomentum() {
+            cancelAnimationFrame(momentumID);
+            function step() {
+                if (Math.abs(velX) > 0.5) {
+                    slider.scrollLeft += velX;
+                    velX *= 0.92;
+                    momentumID = requestAnimationFrame(step);
+                }
+            }
+            step();
+        }
+    });
+}
 
 /* ==========================================================================
    0. Mobile Navigation & Drawer Controller

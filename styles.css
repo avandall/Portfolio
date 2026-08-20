@@ -1295,11 +1295,13 @@ body.no-scroll {
         display: flex !important;
         grid-template-columns: none !important;
         overflow-x: auto !important;
-        scroll-snap-type: x mandatory;
+        scroll-snap-type: x proximity;
+        overscroll-behavior-x: contain;
         gap: 1rem;
         padding: 0.5rem 0.25rem 1rem 0.25rem;
         -webkit-overflow-scrolling: touch;
         scrollbar-width: none;
+        touch-action: pan-x pan-y;
     }
 
     .skills-grid::-webkit-scrollbar {
@@ -1309,8 +1311,7 @@ body.no-scroll {
     .skills-grid .skill-category {
         flex: 0 0 85% !important;
         min-width: 275px;
-        scroll-snap-align: center;
-        scroll-snap-stop: always;
+        scroll-snap-align: start;
         margin: 0;
     }
 
@@ -1321,11 +1322,13 @@ body.no-scroll {
         display: flex !important;
         grid-template-columns: none !important;
         overflow-x: auto !important;
-        scroll-snap-type: x mandatory;
+        scroll-snap-type: x proximity;
+        overscroll-behavior-x: contain;
         gap: 0.85rem;
         padding: 0.5rem 0.25rem 0.85rem 0.25rem;
         -webkit-overflow-scrolling: touch;
         scrollbar-width: none;
+        touch-action: pan-x pan-y;
     }
 
     .metrics-grid::-webkit-scrollbar {
@@ -1335,8 +1338,7 @@ body.no-scroll {
     .metric-card {
         flex: 0 0 78% !important;
         min-width: 235px;
-        scroll-snap-align: center;
-        scroll-snap-stop: always;
+        scroll-snap-align: start;
         padding: 1.15rem;
         border-left: 3px solid var(--border-card);
     }
@@ -1353,11 +1355,13 @@ body.no-scroll {
         display: flex !important;
         grid-template-columns: none !important;
         overflow-x: auto !important;
-        scroll-snap-type: x mandatory;
+        scroll-snap-type: x proximity;
+        overscroll-behavior-x: contain;
         gap: 1rem;
         padding: 0.5rem 0.25rem 0.85rem 0.25rem;
         -webkit-overflow-scrolling: touch;
         scrollbar-width: none;
+        touch-action: pan-x pan-y;
     }
 
     .captures-proof-grid::-webkit-scrollbar {
@@ -1367,8 +1371,7 @@ body.no-scroll {
     .proof-capture-card {
         flex: 0 0 88% !important;
         min-width: 275px;
-        scroll-snap-align: center;
-        scroll-snap-stop: always;
+        scroll-snap-align: start;
     }
 
     /* ----------------------------------------------------------------------
@@ -1378,11 +1381,13 @@ body.no-scroll {
         display: flex !important;
         grid-template-columns: none !important;
         overflow-x: auto !important;
-        scroll-snap-type: x mandatory;
+        scroll-snap-type: x proximity;
+        overscroll-behavior-x: contain;
         gap: 0.85rem;
         padding: 0.5rem 0.25rem 0.85rem 0.25rem;
         -webkit-overflow-scrolling: touch;
         scrollbar-width: none;
+        touch-action: pan-x pan-y;
     }
 
     .under-the-hood-grid::-webkit-scrollbar {
@@ -1392,8 +1397,7 @@ body.no-scroll {
     .hood-card {
         flex: 0 0 85% !important;
         min-width: 260px;
-        scroll-snap-align: center;
-        scroll-snap-stop: always;
+        scroll-snap-align: start;
     }
 
     /* ----------------------------------------------------------------------
@@ -1403,11 +1407,13 @@ body.no-scroll {
         display: flex !important;
         grid-template-columns: none !important;
         overflow-x: auto !important;
-        scroll-snap-type: x mandatory;
+        scroll-snap-type: x proximity;
+        overscroll-behavior-x: contain;
         gap: 1rem;
         padding: 0.5rem 0.25rem 1rem 0.25rem;
         -webkit-overflow-scrolling: touch;
         scrollbar-width: none;
+        touch-action: pan-x pan-y;
     }
 
     .philosophy-grid::-webkit-scrollbar {
@@ -1417,8 +1423,7 @@ body.no-scroll {
     .phil-card {
         flex: 0 0 84% !important;
         min-width: 255px;
-        scroll-snap-align: center;
-        scroll-snap-stop: always;
+        scroll-snap-align: start;
     }
 
     .project-action-bar {
