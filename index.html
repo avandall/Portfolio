@@ -24,23 +24,34 @@
     <div class="top-accent-line"></div>
 
     <!-- Header Navigation -->
-    <header class="site-header">
+    <header class="site-header" id="site-header">
         <div class="container header-container">
             <a href="#" class="brand-logo">
                 <span class="logo-terminal-prompt">&gt;_</span>
                 <span class="logo-text">vunguyen<span class="logo-accent">.dev</span></span>
             </a>
-            <nav class="nav-links">
-                <a href="#projects">✦ Case Studies</a>
-                <a href="#project-voice">Latency Engine</a>
-                <a href="#project-furniture">Vision BoQ AI</a>
-                <a href="#project-wms">Agentic WMS</a>
-                <a href="#philosophy">Reliability</a>
-                <a href="#skills">Toolchain</a>
+            
+            <nav class="nav-links" id="nav-menu">
+                <a href="#projects" class="mobile-nav-item">✦ Case Studies</a>
+                <a href="#project-voice" class="mobile-nav-item">Latency Engine</a>
+                <a href="#project-furniture" class="mobile-nav-item">Vision BoQ AI</a>
+                <a href="#project-wms" class="mobile-nav-item">Agentic WMS</a>
+                <a href="#philosophy" class="mobile-nav-item">Reliability</a>
+                <a href="#skills" class="mobile-nav-item">Toolchain</a>
+                <div class="mobile-menu-cta">
+                    <button class="btn btn-primary btn-full" id="open-contact-btn-mobile-nav">✉️ Get in Touch / Hire Me</button>
+                </div>
             </nav>
-            <div class="header-cta">
+            
+            <div class="header-cta desktop-only-cta">
                 <button class="btn btn-outline" id="open-contact-btn-nav">Get in Touch</button>
             </div>
+
+            <button class="mobile-nav-toggle" id="mobile-nav-toggle" aria-label="Toggle navigation menu">
+                <span class="hamburger-bar"></span>
+                <span class="hamburger-bar"></span>
+                <span class="hamburger-bar"></span>
+            </button>
         </div>
     </header>
 

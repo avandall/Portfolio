@@ -4,9 +4,68 @@
  */
 
 document.addEventListener('DOMContentLoaded', () => {
+    initMobileNav();
     initContactModal();
     initLightboxModal();
 });
+
+/* ==========================================================================
+   0. Mobile Navigation & Drawer Controller
+   ========================================================================== */
+function initMobileNav() {
+    const toggleBtn = document.getElementById('mobile-nav-toggle');
+    const navMenu = document.getElementById('nav-menu');
+    const mobileNavItems = document.querySelectorAll('.mobile-nav-item');
+    const mobileCtaBtn = document.getElementById('open-contact-btn-mobile-nav');
+
+    if (!toggleBtn || !navMenu) return;
+
+    function toggleMenu() {
+        const isOpen = navMenu.classList.toggle('is-open');
+        toggleBtn.classList.toggle('is-active', isOpen);
+        document.body.classList.toggle('no-scroll', isOpen);
+    }
+
+    function closeMenu() {
+        navMenu.classList.remove('is-open');
+        toggleBtn.classList.remove('is-active');
+        document.body.classList.remove('no-scroll');
+    }
+
+    toggleBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        toggleMenu();
+    });
+
+    mobileNavItems.forEach(item => {
+        item.addEventListener('click', () => {
+            closeMenu();
+        });
+    });
+
+    if (mobileCtaBtn) {
+        mobileCtaBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            closeMenu();
+            const modal = document.getElementById('contact-modal');
+            if (modal) modal.classList.add('active');
+        });
+    }
+
+    // Close mobile menu if clicked outside
+    document.addEventListener('click', (e) => {
+        if (navMenu.classList.contains('is-open') && !navMenu.contains(e.target) && !toggleBtn.contains(e.target)) {
+            closeMenu();
+        }
+    });
+
+    // Close menu on resize above 900px
+    window.addEventListener('resize', () => {
+        if (window.innerWidth > 900 && navMenu.classList.contains('is-open')) {
+            closeMenu();
+        }
+    });
+}
 
 /* ==========================================================================
    1. Contact Modal & Formspree Email Delivery (avannguyen.nina@gmail.com)
@@ -16,7 +75,8 @@ function initContactModal() {
     const openBtns = [
         document.getElementById('open-contact-btn-nav'),
         document.getElementById('open-contact-btn-hero'),
-        document.getElementById('open-contact-btn-footer')
+        document.getElementById('open-contact-btn-footer'),
+        document.getElementById('open-contact-btn-mobile-nav')
     ];
     const closeBtn = document.getElementById('close-modal-btn');
 
