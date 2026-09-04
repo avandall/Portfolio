@@ -160,6 +160,15 @@ function initContactModal() {
             if (e.target === modal) modal.classList.remove('active');
         });
     }
+
+    const emailInput = document.getElementById('contact-email');
+    if (emailInput) {
+        emailInput.addEventListener('input', () => {
+            if (emailInput.classList.contains('input-error')) {
+                emailInput.classList.remove('input-error');
+            }
+        });
+    }
 }
 
 async function handleFormSubmit(event) {
@@ -172,13 +181,30 @@ async function handleFormSubmit(event) {
     const messageInput = document.getElementById('contact-message');
     const targetEmail = "avannguyen.nina@gmail.com";
 
-    const email = emailInput ? emailInput.value : "";
-    const subject = subjectInput ? subjectInput.value : "";
-    const message = messageInput ? messageInput.value : "";
+    const email = emailInput ? emailInput.value.trim() : "";
+    const subject = subjectInput ? subjectInput.value.trim() : "";
+    const message = messageInput ? messageInput.value.trim() : "";
+
+    // Client-side strict email format verification (prevents invalid patterns like "user@domain" without TLD)
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if (!emailRegex.test(email)) {
+        if (emailInput) {
+            emailInput.classList.remove('input-error');
+            void emailInput.offsetWidth; // Trigger reflow for re-animation
+            emailInput.classList.add('input-error');
+            emailInput.focus();
+        }
+        showFeedbackBanner("error", "⚠️ Please enter a valid email address (e.g. name@company.com)");
+        return;
+    }
+
+    if (emailInput) {
+        emailInput.classList.remove('input-error');
+    }
 
     if (submitBtn) {
         submitBtn.disabled = true;
-        submitBtn.innerHTML = `⏳ Connecting to Formspree...`;
+        submitBtn.innerHTML = `⏳ Sending message...`;
     }
 
     try {
@@ -193,31 +219,51 @@ async function handleFormSubmit(event) {
             }
         });
 
+        const data = await response.json().catch(() => ({}));
+
         if (response.ok) {
-            // ONLY show success banner when Formspree HTTP status is 200 OK!
-            showFeedbackBanner("success", `✅ Email Dispatched Successfully via Formspree! Message delivered to ${targetEmail}.`);
+            showFeedbackBanner("success", `✅ Message delivered successfully via Formspree! Sent to ${targetEmail}.`);
             if (form) form.reset();
-        } else {
-            // Formspree returned an error (e.g. 404 Endpoint Not Activated Yet)
-            const data = await response.json().catch(() => ({}));
-            console.warn("Formspree response not OK:", response.status, data);
-            
-            showFeedbackBanner("warning", `⚠️ Formspree Endpoint Pending Activation! Opening default email client to send to ${targetEmail}...`);
-            
-            // Trigger mailto fallback so email client opens directly
+        } else if (response.status === 422) {
+            // Formspree validation error (e.g. email rejected by server)
+            console.warn("Formspree validation error:", data);
+            let errMsg = "Please check your inputs and try again.";
+            if (data.errors && data.errors.length) {
+                errMsg = data.errors.map(e => e.message ? `${e.field}: ${e.message}` : e.message).join(", ");
+            } else if (data.error) {
+                errMsg = data.error;
+            }
+            showFeedbackBanner("error", `⚠️ Validation error: ${errMsg}`);
+            if (emailInput) {
+                emailInput.classList.add('input-error');
+                emailInput.focus();
+            }
+        } else if (response.status === 429) {
+            // Rate limit reached
+            console.warn("Formspree rate limited:", response.status, data);
+            showFeedbackBanner("warning", `⚠️ Form submission limit reached. Opening default email client to send to ${targetEmail}...`);
             setTimeout(() => {
                 const mailtoUrl = `mailto:${targetEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent("From: " + email + "\n\n" + message)}`;
                 window.location.href = mailtoUrl;
-            }, 800);
+            }, 1000);
+        } else {
+            // Formspree server error or inactive endpoint
+            console.warn("Formspree response error:", response.status, data);
+            showFeedbackBanner("warning", `⚠️ Unable to deliver via form service. Opening email client to send to ${targetEmail}...`);
+            setTimeout(() => {
+                const mailtoUrl = `mailto:${targetEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent("From: " + email + "\n\n" + message)}`;
+                window.location.href = mailtoUrl;
+            }, 1000);
         }
     } catch (err) {
+        // Network blocked (e.g. AdBlocker or offline)
         console.warn("Network dispatch note, triggering mailto fallback:", err);
-        showFeedbackBanner("warning", `⚠️ Formspree Endpoint Pending Activation! Opening mail client to send to ${targetEmail}...`);
+        showFeedbackBanner("warning", `⚠️ Connection blocked (e.g. by AdBlocker/network). Opening email client to send to ${targetEmail}...`);
         
         setTimeout(() => {
             const mailtoUrl = `mailto:${targetEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent("From: " + email + "\n\n" + message)}`;
             window.location.href = mailtoUrl;
-        }, 800);
+        }, 1000);
     } finally {
         if (submitBtn) {
             submitBtn.disabled = false;
@@ -235,20 +281,23 @@ function showFeedbackBanner(type, messageText) {
 
     const banner = document.createElement('div');
     banner.id = 'form-feedback-banner';
-    
-    if (type === "success") {
-        banner.className = 'form-success-banner';
-    } else {
-        banner.className = 'form-warning-banner';
-    }
+    banner.className = `form-feedback-banner form-${type}-banner`;
 
-    banner.innerHTML = `<span>${messageText}</span>`;
+    banner.innerHTML = `
+        <span class="banner-text">${messageText}</span>
+        <button type="button" class="banner-close" aria-label="Dismiss notification">&times;</button>
+    `;
+
+    const closeBtn = banner.querySelector('.banner-close');
+    if (closeBtn) {
+        closeBtn.addEventListener('click', () => banner.remove());
+    }
 
     const form = document.getElementById('contact-form');
     modalCard.insertBefore(banner, form);
 
     setTimeout(() => {
-        if (banner) banner.remove();
+        if (banner && banner.parentNode) banner.remove();
     }, 7000);
 }
 
