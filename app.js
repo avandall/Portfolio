@@ -171,8 +171,11 @@ function initContactModal() {
     }
 }
 
+let isFormSubmitting = false;
+
 async function handleFormSubmit(event) {
     event.preventDefault();
+    if (isFormSubmitting) return;
     
     const form = document.getElementById('contact-form');
     const submitBtn = document.getElementById('contact-submit-btn');
@@ -202,6 +205,7 @@ async function handleFormSubmit(event) {
         emailInput.classList.remove('input-error');
     }
 
+    isFormSubmitting = true;
     if (submitBtn) {
         submitBtn.disabled = true;
         submitBtn.innerHTML = `⏳ Sending message...`;
@@ -265,6 +269,7 @@ async function handleFormSubmit(event) {
             window.location.href = mailtoUrl;
         }, 1000);
     } finally {
+        isFormSubmitting = false;
         if (submitBtn) {
             submitBtn.disabled = false;
             submitBtn.innerHTML = `✉️ Send Email to ${targetEmail}`;

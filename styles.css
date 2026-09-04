@@ -764,6 +764,7 @@ body {
 .skill-category.skill-emerald {
     border-top: 3px solid var(--accent-emerald);
 }
+.skill-category.skill-emerald h3,
 .skill-category.skill-emerald h4 {
     color: var(--accent-emerald);
     font-family: var(--font-heading);
@@ -780,6 +781,7 @@ body {
 .skill-category.skill-sky {
     border-top: 3px solid var(--accent-sky);
 }
+.skill-category.skill-sky h3,
 .skill-category.skill-sky h4 {
     color: var(--accent-sky);
     font-family: var(--font-heading);
@@ -796,6 +798,7 @@ body {
 .skill-category.skill-purple {
     border-top: 3px solid var(--accent-purple);
 }
+.skill-category.skill-purple h3,
 .skill-category.skill-purple h4 {
     color: var(--accent-purple);
     font-family: var(--font-heading);
