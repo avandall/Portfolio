@@ -315,7 +315,7 @@ function initLightboxModal() {
     lightbox.id = 'lightbox-modal';
     lightbox.innerHTML = `
         <button class="lightbox-close" id="lightbox-close">&times;</button>
-        <img src="" alt="Proof Capture HD View" class="lightbox-content" id="lightbox-img">
+        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 900 480'%3E%3C/svg%3E" alt="Proof Capture HD View" class="lightbox-content" id="lightbox-img" width="900" height="480">
     `;
     document.body.appendChild(lightbox);
 
