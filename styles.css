@@ -256,7 +256,7 @@ body {
 
 .badge-purple {
     background: rgba(168, 85, 247, 0.15);
-    color: #C084FC;
+    color: #D8B4FE;
     border: 1px solid rgba(168, 85, 247, 0.35);
 }
 
@@ -766,7 +766,7 @@ body {
 }
 .skill-category.skill-emerald h3,
 .skill-category.skill-emerald h4 {
-    color: var(--accent-emerald);
+    color: #6EE7B7;
     font-family: var(--font-heading);
     font-size: 1.1rem;
     margin-bottom: 1.1rem;
@@ -783,7 +783,7 @@ body {
 }
 .skill-category.skill-sky h3,
 .skill-category.skill-sky h4 {
-    color: var(--accent-sky);
+    color: #7DD3FC;
     font-family: var(--font-heading);
     font-size: 1.1rem;
     margin-bottom: 1.1rem;
@@ -800,7 +800,7 @@ body {
 }
 .skill-category.skill-purple h3,
 .skill-category.skill-purple h4 {
-    color: var(--accent-purple);
+    color: #D8B4FE;
     font-family: var(--font-heading);
     font-size: 1.1rem;
     margin-bottom: 1.1rem;
@@ -808,7 +808,7 @@ body {
 .tag-purple {
     background-color: rgba(168, 85, 247, 0.12);
     border: 1px solid rgba(168, 85, 247, 0.3);
-    color: #C084FC;
+    color: #D8B4FE;
 }
 
 .tags-list {
