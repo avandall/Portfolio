@@ -1705,3 +1705,16 @@ body.no-scroll {
     transform: translateY(-1px);
     box-shadow: 0 4px 12px rgba(56, 189, 248, 0.15);
 }
+
+/* Mobile Rendering Performance Optimizations */
+.case-study-card {
+    content-visibility: auto;
+    contain-intrinsic-size: 0 650px;
+}
+
+.philosophy-section,
+.skills-section,
+.cta-section {
+    content-visibility: auto;
+    contain-intrinsic-size: 0 500px;
+}

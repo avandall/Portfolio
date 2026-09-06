@@ -28,12 +28,14 @@
     <meta name="twitter:description" content="AI-Powered Systems Developer building resilient multi-model AI workflows, low-latency pipelines, and high-throughput agentic microservices.">
     <meta name="twitter:image" content="https://avandall.github.io/Portfolio/assets/images/duc_anh_profile.jpg">
 
-    <!-- Google Fonts -->
+    <!-- Google Fonts (Optimized Non-blocking Asynchronous Load) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&family=Space+Grotesk:wght@600;700&display=swap"
-        rel="stylesheet">
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&family=Space+Grotesk:wght@600;700&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&family=Space+Grotesk:wght@600;700&display=swap" media="print" onload="this.media='all'">
+    <noscript>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&family=Space+Grotesk:wght@600;700&display=swap">
+    </noscript>
 
     <link rel="stylesheet" href="styles.css">
     <!-- Web Analytics (Cloudflare / GA4 / Plausible) -->
@@ -125,7 +127,7 @@
                         <!-- Tilted Photo Layer (Uncropped photo, angled top-left layer) -->
                         <div class="dev-photo-layer">
                             <img src="assets/images/duc_anh_profile.jpg" alt="Vu Nguyen - Avandall"
-                                class="dev-photo-img">
+                                class="dev-photo-img" width="510" height="918" fetchpriority="high" decoding="async">
                         </div>
 
                         <!-- Developer Info Box -->
@@ -228,7 +230,7 @@
                         <div class="captures-proof-grid">
                             <figure class="proof-capture-card">
                                 <img src="assets/captures/proj1_devtools_latency.png" alt="DevTools TTFA Latency Trace"
-                                    class="capture-img">
+                                    class="capture-img" width="1200" height="640" loading="lazy" decoding="async">
                                 <figcaption class="capture-caption">
                                     <span class="badge badge-emerald">REAL CAPTURE 01</span>
                                     <strong>Chrome DevTools Trace:</strong> Verified 142ms Time-to-First-Audio (TTFA)
@@ -238,7 +240,7 @@
 
                             <figure class="proof-capture-card">
                                 <img src="assets/captures/proj1_dual_model_terminal.png"
-                                    alt="FastAPI Parallel Dual-Model Log" class="capture-img">
+                                    alt="FastAPI Parallel Dual-Model Log" class="capture-img" width="1200" height="640" loading="lazy" decoding="async">
                                 <figcaption class="capture-caption">
                                     <span class="badge badge-purple">REAL CAPTURE 02</span>
                                     <strong>Server Execution Log:</strong> Parallel dispatching of Model 1 (User Reply
@@ -333,7 +335,7 @@
                         <div class="captures-proof-grid">
                             <figure class="proof-capture-card">
                                 <img src="assets/captures/proj2_pydantic_vision_payload.png"
-                                    alt="Vision AI to Pydantic Payload" class="capture-img">
+                                    alt="Vision AI to Pydantic Payload" class="capture-img" width="1200" height="640" loading="lazy" decoding="async">
                                 <figcaption class="capture-caption">
                                     <span class="badge badge-sky">REAL CAPTURE 03</span>
                                     <strong>Vision AI Extraction &amp; Pydantic Guard:</strong> 3D render input parsed
@@ -344,7 +346,7 @@
 
                             <figure class="proof-capture-card">
                                 <img src="assets/captures/proj2_boq_table_ui.png"
-                                    alt="Next.js BoQ Verification Table UI" class="capture-img">
+                                    alt="Next.js BoQ Verification Table UI" class="capture-img" width="1200" height="640" loading="lazy" decoding="async">
                                 <figcaption class="capture-caption">
                                     <span class="badge badge-emerald">REAL CAPTURE 04</span>
                                     <strong>BoQ Approval Studio UI:</strong> 30-second human verification table with
@@ -429,7 +431,7 @@
                         <div class="captures-proof-grid">
                             <figure class="proof-capture-card">
                                 <img src="assets/captures/proj3_mcp_terminal_trace.png" alt="19 MCP Tools Stdio Trace"
-                                    class="capture-img">
+                                    class="capture-img" width="1200" height="430" loading="lazy" decoding="async">
                                 <figcaption class="capture-caption">
                                     <span class="badge badge-purple">REAL CAPTURE 05</span>
                                     <strong>MCP Tool Execution Trace:</strong> `WMS_MCP_Server` running
@@ -440,7 +442,7 @@
 
                             <figure class="proof-capture-card">
                                 <img src="assets/captures/proj3_redis_db_locks.png"
-                                    alt="Redis Micro-batching and PostgreSQL Row Lock Log" class="capture-img">
+                                    alt="Redis Micro-batching and PostgreSQL Row Lock Log" class="capture-img" width="1200" height="380" loading="lazy" decoding="async">
                                 <figcaption class="capture-caption">
                                     <span class="badge badge-emerald">REAL CAPTURE 06</span>
                                     <strong>Redis Stream &amp; ACID Locks:</strong> `IngestBuffer` 20ms micro-batching
@@ -668,7 +670,7 @@
         </div>
     </div>
 
-    <script src="app.js"></script>
+    <script src="app.js" defer></script>
 </body>
 
 </html>
