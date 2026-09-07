@@ -1738,26 +1738,29 @@ body.no-scroll {
     align-items: center;
 }
 
-/* Hero Floating Seal Badge */
-.hero-seal-badge {
+
+
+/* Photo Verified Seal Stamp (Non-overlapping Certified Seal) */
+.photo-verified-stamp {
     position: absolute;
-    top: -0.5rem;
-    right: -0.75rem;
-    z-index: 10;
-    width: 108px;
-    height: 108px;
+    bottom: -16px;
+    right: -16px;
+    z-index: 15;
+    width: 68px;
+    height: 68px;
     display: inline-block;
-    opacity: 0.82;
-    transform: rotate(5deg);
+    opacity: 0.9;
+    transform: rotate(8deg);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    filter: drop-shadow(0 6px 16px rgba(0, 0, 0, 0.5));
+    filter: drop-shadow(0 4px 14px rgba(0, 0, 0, 0.65));
     border-radius: 50%;
+    cursor: pointer;
 }
 
-.hero-seal-badge:hover {
+.photo-verified-stamp:hover {
     opacity: 1;
-    transform: rotate(0deg) scale(1.08);
-    filter: drop-shadow(0 8px 24px rgba(84, 227, 153, 0.4));
+    transform: rotate(0deg) scale(1.15);
+    filter: drop-shadow(0 6px 20px rgba(84, 227, 153, 0.45));
 }
 
 .hero-seal-svg {
@@ -1768,11 +1771,10 @@ body.no-scroll {
 }
 
 @media (max-width: 768px) {
-    .hero-seal-badge {
-        width: 84px;
-        height: 84px;
-        top: -0.35rem;
-        right: -0.35rem;
-        opacity: 0.88;
+    .photo-verified-stamp {
+        width: 56px;
+        height: 56px;
+        bottom: -12px;
+        right: -10px;
     }
 }
