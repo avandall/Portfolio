@@ -904,6 +904,13 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.footer-badge-wrapper {
+    display: inline-flex;
+    align-items: center;
 }
 
 .footer-links {
@@ -1717,4 +1724,16 @@ body.no-scroll {
 .cta-section {
     content-visibility: auto;
     contain-intrinsic-size: 0 500px;
+}
+
+.flyrank-verified-badge {
+    transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.flyrank-verified-badge:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(84, 227, 153, 0.18) !important;
+}
+.footer-badge-wrapper {
+    display: flex;
+    align-items: center;
 }
